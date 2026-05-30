@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "878598244105",
+    "project_id": "sofit-pdv",
+    "storage_bucket": "sofit-pdv.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878598244105:android:d8891cd52de82f4e30b5d8",
+        "android_client_info": {
+          "package_name": "Sofit.pdv.modas1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNkpsxC7NMBQ05OFuecjdFaWfA49_cke8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878598244105:android:c86b2d2728bb3b3a30b5d8",
+        "android_client_info": {
+          "package_name": "com.sofit.sofit_modas_pdv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNkpsxC7NMBQ05OFuecjdFaWfA49_cke8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
