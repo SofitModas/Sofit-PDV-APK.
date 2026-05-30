@@ -9,15 +9,15 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Clean and Setup
+      - name: Clean, Setup and Build
         script: |
           flutter clean
           flutter pub get
           cd android
+          # Força o Gradle a usar o AndroidX e Jetifier para converter libs antigas
+          echo "android.useAndroidX=true" >> gradle.properties
+          echo "android.enableJetifier=true" >> gradle.properties
           gradle wrapper --gradle-version 8.3
-      - name: Build Android APK
-        script: |
-          # O --info nos mostrará exatamente qual arquivo Java está falhando
-          flutter build apk --debug --android-skip-build-dependency-validation --info
+          ./gradlew assembleDebug --no-daemon --info
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
