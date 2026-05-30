@@ -1,12 +1,24 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
+    // Esta linha é a chave: ela conecta o projeto Android com as classes do Flutter
+    id "dev.flutter.flutter-gradle-plugin" 
 }
 
 android {
     namespace "com.sofit.sofit_modas_pdv"
     compileSdk 34
+
+    // Adicione esta configuração para garantir que o compilador Java 
+    // entenda as classes do Flutter (Java 17)
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 
     defaultConfig {
         applicationId "com.sofit.sofit_modas_pdv"
@@ -18,7 +30,6 @@ android {
 }
 
 dependencies {
-    // Isso resolve o erro de 'androidx.annotation.Keep' e outros símbolos ausentes
+    // Isso traz as classes do AndroidX que o seu Firebase e o Flutter precisam
     implementation "androidx.annotation:annotation:1.6.0"
-    implementation "androidx.appcompat:appcompat:1.6.1"
 }
