@@ -9,13 +9,14 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Clean and Build
+      - name: Clean and Setup
         script: |
           flutter clean
           flutter pub get
           cd android
           gradle wrapper --gradle-version 8.3
-          ./gradlew clean
-          ./gradlew assembleDebug --no-daemon --android-skip-build-dependency-validation
+      - name: Build Android APK
+        script: |
+          flutter build apk --debug --android-skip-build-dependency-validation
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
