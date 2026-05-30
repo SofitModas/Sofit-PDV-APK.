@@ -1,11 +1,13 @@
 workflows:
   android-debug-apk:
-    name: Android Debug APK (Flutter)
+    name: Android Debug APK
     max_build_duration: 60
     instance_type: mac_mini_m1
     triggering:
       events:
         - push
+    environment:
+      java: 17  # Adicione essa linha aqui
     scripts:
       - name: Get Flutter dependencies
         script: |
