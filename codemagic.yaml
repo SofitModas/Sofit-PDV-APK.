@@ -11,17 +11,14 @@ workflows:
     scripts:
       - name: Create local.properties and Build
         script: |
-          # Cria o arquivo local.properties que o settings.gradle procura
           echo "flutter.sdk=$FLUTTER_ROOT" > android/local.properties
-          
           flutter clean
           flutter pub get
-          
           cd android
-          # Força o uso do AndroidX
-          echo "android.useAndroidX=true" >> gradle.properties
-          echo "android.enableJetifier=true" >> gradle.properties
-          
+          # Garante que o gradlew seja criado caso não exista
+          gradle wrapper --gradle-version 8.3
+          # Garante que o arquivo tenha permissão de execução
+          chmod +x gradlew
+          # Agora executa o clean e o assemble
+          ./gradlew clean
           ./gradlew assembleDebug --no-daemon --info
-    artifacts:
-      - build/app/outputs/flutter-apk/*.apk
