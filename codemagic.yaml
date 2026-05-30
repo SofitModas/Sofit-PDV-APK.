@@ -9,17 +9,12 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Create local.properties and Build
+      - name: Build Android APK
         script: |
           echo "flutter.sdk=$FLUTTER_ROOT" > android/local.properties
           flutter clean
           flutter pub get
-          cd android
-          # Garante a criação do wrapper e corrige permissões
-          gradle wrapper --gradle-version 8.3
-          chmod +x gradlew
-          # Limpa e builda
-          ./gradlew clean
-          ./gradlew assembleDebug --no-daemon --info
+          # Deixe o comando do flutter cuidar de tudo agora
+          flutter build apk --debug --info
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
