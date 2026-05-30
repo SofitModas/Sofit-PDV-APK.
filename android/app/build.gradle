@@ -1,81 +1,44 @@
 def localProperties = new Properties()
-
 def localPropertiesFile = rootProject.file('local.properties')
-
 if (localPropertiesFile.exists()) {
-
     localPropertiesFile.withReader('UTF-8') { reader -> localProperties.load(reader) }
-
 }
-
-
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
-
 if (flutterRoot == null) {
-
     throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-
 }
-
-
 
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle" // <--- ESSA LINHA É A CHAVE!
-
-
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-
     namespace "com.sofit.sofit_modas_pdv"
-
     compileSdk 34
 
-
-
     compileOptions {
-
         sourceCompatibility JavaVersion.VERSION_17
-
         targetCompatibility JavaVersion.VERSION_17
-
     }
-
-
 
     kotlinOptions {
-
         jvmTarget = '17'
-
     }
-
-
 
     defaultConfig {
-
         applicationId "com.sofit.sofit_modas_pdv"
-
         minSdk 23
-
         targetSdk 34
-
         versionCode 1
-
         versionName "1.0.0"
-
     }
-
 }
-
-
 
 dependencies {
-
-    // Isso traz as classes do AndroidX que o seu Firebase e o Flutter precisam
-
     implementation "androidx.annotation:annotation:1.6.0"
-
+    // Caso você use Firebase, as dependências aqui são gerenciadas pelo pubspec.yaml
 }
+
+// ESTA É A LINHA QUE CONECTA O FIREBASE:
+apply plugin: 'com.google.gms.google-services'
