@@ -7,17 +7,15 @@ workflows:
       events:
         - push
     environment:
-      java: 17  # Adicione essa linha aqui
+      java: 17
     scripts:
-      - name: Get Flutter dependencies
+      - name: Clean and Build
         script: |
-          flutter packages get
-      - name: Force Compatible Gradle Version
-        script: |
+          flutter clean
+          flutter pub get
           cd android
           gradle wrapper --gradle-version 8.3
-      - name: Build Android APK
-        script: |
-          flutter build apk --debug --android-skip-build-dependency-validation
+          ./gradlew clean
+          ./gradlew assembleDebug --no-daemon --android-skip-build-dependency-validation
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
