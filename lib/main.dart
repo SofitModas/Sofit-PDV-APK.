@@ -34,14 +34,8 @@ class SofitModasApp extends StatelessWidget {
       title: 'Sofit Modas PDV',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-  useMaterial3: true,
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-),
-        primarySwatch: Colors.teal,
-        useMaterial-design: true,
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const CatalogScreen(),
-    );
-  }
 }
