@@ -11,10 +11,14 @@ workflows:
     scripts:
       - name: Build Android APK
         script: |
+          # Cria o arquivo que o build.gradle usa para encontrar o SDK do Flutter
           echo "flutter.sdk=$FLUTTER_ROOT" > android/local.properties
+          
+          # Limpeza e preparação
           flutter clean
           flutter pub get
-          # Deixe o comando do flutter cuidar de tudo agora
+          
+          # Executa o build usando o comando otimizado do Flutter
           flutter build apk --debug --info
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
