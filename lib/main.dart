@@ -12,7 +12,7 @@ void main() async {
   // Garante que os bindings nativos estejam prontos antes de ligar o Firebase
   WidgetsFlutterBinding.ensureInitialized();
   
-  // Inicializa o Firebase padrão do seu projeto (configurado via google-services.json)
+  // Inicializa o Firebase padrão do seu projeto
   await Firebase.initializeApp();
 
   runApp(
@@ -38,4 +38,8 @@ class SofitModasApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         scaffoldBackgroundColor: Colors.white,
       ),
+      // Adicionamos o home aqui, que faltava no seu trecho anterior
+      home: const CatalogScreen(),
+    );
+  }
 }
