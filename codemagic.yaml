@@ -10,6 +10,10 @@ workflows:
       - name: Get Flutter dependencies
         script: |
           flutter packages get
+      - name: Force Compatible Gradle Version
+        script: |
+          cd android
+          gradle wrapper --gradle-version 8.3
       - name: Build Android APK
         script: |
           flutter build apk --debug
