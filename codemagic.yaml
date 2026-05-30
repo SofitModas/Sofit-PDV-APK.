@@ -15,10 +15,11 @@ workflows:
           flutter clean
           flutter pub get
           cd android
-          # Garante que o gradlew seja criado caso não exista
+          # Garante a criação do wrapper e corrige permissões
           gradle wrapper --gradle-version 8.3
-          # Garante que o arquivo tenha permissão de execução
           chmod +x gradlew
-          # Agora executa o clean e o assemble
+          # Limpa e builda
           ./gradlew clean
           ./gradlew assembleDebug --no-daemon --info
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
