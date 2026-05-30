@@ -115,7 +115,7 @@ class CatalogScreen extends StatelessWidget {
                         'R\$ ${(produto.precoPromo ?? v.preco).toStringAsFixed(2)}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: semEstoque ? Colors.red : Colors.black87,
+                      color: semEstoque ? Colors.red : Colors.black87,
                         ),
                       ),
                       enabled: !semEstoque,
